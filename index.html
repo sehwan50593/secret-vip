@@ -5,25 +5,27 @@
     <title>Secret VIP 프로모션 안내</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: -apple-system, sans-serif; background-color: #f8fafc; padding: 20px 15px; display: flex; justify-content: center; }
-        .container { max-width: 600px; width: 100%; background: #ffffff; padding: 30px 25px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        .header-title { font-size: 22px; font-weight: 800; text-align: center; margin-bottom: 20px; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f8fafc; padding: 20px 15px; display: flex; justify-content: center; }
+        .container { max-width: 500px; width: 100%; background: #ffffff; padding: 25px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .header-title { font-size: 20px; font-weight: 800; text-align: center; margin-bottom: 20px; color: #1e293b; }
         
-        /* 강조 박스 */
-        .urgent-highlight { background-color: #fee2e2; border: 2px solid #ef4444; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
-        .urgent-text { color: #b91c1c; font-weight: 800; margin-bottom: 5px; }
+        /* 강조 박스 수정 */
+        .urgent-highlight { background-color: #fef2f2; border: 2px solid #fecaca; padding: 15px; border-radius: 12px; margin-bottom: 20px; text-align: center; }
+        .urgent-text { color: #b91c1c; font-weight: 800; margin-bottom: 4px; font-size: 15px; }
+        .urgent-desc { color: #7f1d1d; font-size: 13px; }
 
-        /* 복사 버튼 */
-        .code-container { background-color: #f1f5f9; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 20px; }
-        .code-highlight { font-size: 24px; font-weight: 700; color: #dc2626; display: block; margin-bottom: 10px; }
-        .copy-btn { background: #334155; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+        /* 복사 영역 */
+        .code-container { background-color: #f8fafc; border: 2px solid #e2e8f0; padding: 20px; border-radius: 12px; text-align: center; margin-bottom: 20px; }
+        .code-highlight { font-size: 28px; font-weight: 800; color: #dc2626; display: block; margin-bottom: 12px; letter-spacing: 1px; }
+        .copy-btn { background: #334155; color: white; border: none; padding: 10px 24px; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 14px; transition: background 0.2s; }
+        .copy-btn:hover { background: #1e293b; }
 
-        /* 토글 스타일 */
-        .toggle-section { margin-bottom: 10px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
-        .toggle-header { background: #f8fafc; padding: 15px; cursor: pointer; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
-        .toggle-content { padding: 15px; display: none; font-size: 14px; color: #475569; background: #fff; }
+        /* 토글 스타일 개선 */
+        .toggle-section { margin-bottom: 8px; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; }
+        .toggle-header { background: #ffffff; padding: 16px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: #334155; }
+        .toggle-content { padding: 0 16px 16px 16px; display: none; font-size: 13.5px; color: #64748b; line-height: 1.6; background: #ffffff; }
         
-        .link-button { display: block; background-color: #2563eb; color: #ffffff; padding: 15px; text-decoration: none; border-radius: 8px; font-weight: 700; text-align: center; margin: 20px 0; }
+        .link-button { display: block; background-color: #2563eb; color: #ffffff; padding: 16px; text-decoration: none; border-radius: 12px; font-weight: 700; text-align: center; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2); }
     </style>
 </head>
 <body>
@@ -33,7 +35,7 @@
 
     <div class="urgent-highlight">
         <p class="urgent-text">⚠️ 할인 적용 필수: 추천인 코드 입력</p>
-        <p style="font-size: 14px;">결제 시 아래 코드를 반드시 입력해야 할인 혜택이 적용됩니다.</p>
+        <p class="urgent-desc">결제 시 아래 코드를 반드시 입력해야 할인이 적용됩니다.</p>
     </div>
 
     <div class="code-container">
@@ -43,10 +45,9 @@
 
     <a href="https://theplanx.imweb.me/Secret-VIP" class="link-button" target="_blank">Secret VIP 가입/결제하러 가기</a>
 
-    <!-- 토글형 안내 사항 -->
     <div class="toggle-section">
-        <div class="toggle-header" onclick="toggle(this)">🚀 신규 구독 안내 ▼</div>
-        <div class="toggle-content">디즈니플러스, 넷플릭스, 디스코드 니트로 등 인기 구독 서비스가 추가되었습니다.</div>
+        <div class="toggle-header" onclick="toggle(this)">🚀 신규 구독 추가 예정 ▼</div>
+        <div class="toggle-content">디즈니플러스, 넷플릭스, 디스코드 니트로 등 인기 구독 서비스가 추가될 예정입니다.</div>
     </div>
     <div class="toggle-section">
         <div class="toggle-header" onclick="toggle(this)">📦 제공 방식 안내 ▼</div>
