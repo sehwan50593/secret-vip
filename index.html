@@ -5,110 +5,68 @@
     <title>Secret VIP 프로모션 안내</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f0f4f8; padding: 20px 15px; display: flex; justify-content: center; }
-        .container { max-width: 500px; width: 100%; background: #ffffff; padding: 30px; border-radius: 24px; box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
-        .header-title { font-size: 22px; font-weight: 800; text-align: center; margin-bottom: 24px; color: #1e293b; letter-spacing: -0.5px; }
+        body { font-family: 'Pretendard', -apple-system, sans-serif; background-color: #f8fafc; padding: 20px 15px; display: flex; justify-content: center; }
+        .container { max-width: 500px; width: 100%; background: #ffffff; padding: 30px; border-radius: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+        .header-title { font-size: 20px; font-weight: 800; text-align: center; margin-bottom: 24px; color: #1e293b; }
+
+        /* 1순위: 결제 버튼 (가장 잘 보이게) */
+        .link-button { display: block; background: #2563eb; color: #ffffff; padding: 18px; text-decoration: none; border-radius: 14px; font-weight: 800; text-align: center; margin-bottom: 24px; font-size: 17px; box-shadow: 0 4px 12px rgba(37,99,235,0.25); transition: transform 0.2s; }
+        .link-button:hover { transform: translateY(-2px); }
+
+        /* 2순위: 추천인 코드 (할인 적용 필수 강조) */
+        .code-area { background: #f1f5f9; padding: 20px; border-radius: 14px; margin-bottom: 24px; text-align: center; border: 1px solid #e2e8f0; }
+        .code-label { font-size: 13px; color: #64748b; font-weight: 600; margin-bottom: 8px; }
+        .code-value { font-size: 26px; font-weight: 800; color: #1e293b; display: block; margin-bottom: 12px; }
+        .copy-btn { background: #ffffff; color: #334155; border: 1px solid #cbd5e1; padding: 8px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 13px; }
         
-        /* 강조 박스 스타일링 */
-        .urgent-highlight { background-color: #fff1f2; border: 2px solid #fda4af; padding: 18px; border-radius: 16px; margin-bottom: 24px; text-align: center; box-shadow: inset 0 1px 2px rgba(255,255,255,0.5); }
-        .urgent-text { color: #9f1239; font-weight: 800; margin-bottom: 6px; font-size: 16px; }
-        .urgent-desc { color: #be123c; font-size: 14px; line-height: 1.5; }
-
-        /* 복사 영역 스타일링 */
-        .code-container { background-color: #f8fafc; border: 2px dashed #cbd5e1; padding: 24px; border-radius: 16px; text-align: center; margin-bottom: 24px; transition: all 0.3s ease; }
-        .code-container:hover { border-color: #94a3b8; background-color: #f1f5f9; }
-        .code-label { font-size: 13px; color: #64748b; margin-bottom: 8px; font-weight: 500; }
-        .code-highlight { font-size: 32px; font-weight: 900; color: #dc2626; display: block; margin-bottom: 16px; letter-spacing: 2px; font-family: 'SF Mono', 'Consolas', monospace; }
-        .copy-btn { background: #334155; color: white; border: none; padding: 12px 32px; border-radius: 50px; cursor: pointer; font-weight: 700; font-size: 15px; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(51, 65, 85, 0.25); }
-        .copy-btn:hover { background: #1e293b; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(51, 65, 85, 0.3); }
-        .copy-btn:active { transform: translateY(1px); }
-
-        /* 메인 버튼 스타일링 */
-        .link-button { display: block; background: linear-gradient(135deg, #3b82f6, #2563eb); color: #ffffff; padding: 18px; text-decoration: none; border-radius: 16px; font-weight: 800; text-align: center; margin-bottom: 24px; font-size: 16px; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3); }
-        .link-button:hover { background: linear-gradient(135deg, #2563eb, #1d4ed8); box-shadow: 0 10px 24px rgba(37, 99, 235, 0.4); transform: translateY(-2px); }
-
-        /* 토글 스타일링 개선 */
-        .toggle-section { margin-bottom: 12px; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; background: #ffffff; transition: all 0.3s ease; }
-        .toggle-section:last-child { margin-bottom: 0; }
-        .toggle-header { background: #ffffff; padding: 18px 20px; cursor: pointer; font-weight: 700; display: flex; justify-content: space-between; align-items: center; font-size: 15px; color: #334155; transition: background 0.2s; }
-        .toggle-header:hover { background-color: #f8fafc; }
-        .toggle-header::after { content: '+'; font-size: 18px; color: #94a3b8; font-weight: 400; transition: transform 0.3s ease; }
-        .toggle-section.active .toggle-header::after { content: '−'; color: #2563eb; transform: rotate(180deg); }
-        .toggle-content { padding: 0 20px 20px 20px; display: none; font-size: 14px; color: #64748b; line-height: 1.6; }
+        /* 3순위: 기타 안내 (토글) */
+        .toggle-section { margin-bottom: 8px; }
+        .toggle-header { padding: 14px; cursor: pointer; font-size: 14px; color: #475569; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; justify-content: space-between; }
+        .toggle-content { padding: 15px; display: none; font-size: 13px; color: #64748b; line-height: 1.6; background: #f8fafc; border-radius: 8px; margin-top: 5px; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="container">
-    <h1 class="header-title">✨ Secret VIP 프로모션 안내</h1>
+    <h1 class="header-title">✨ Secret VIP 프로모션</h1>
 
-    <div class="urgent-highlight">
-        <p class="urgent-text">⚠️ 할인 적용 필수: 추천인 코드 입력</p>
-        <p class="urgent-desc">결제 페이지에서 아래 추천인 코드를 반드시 입력해야<br>할인 혜택을 받으실 수 있습니다.</p>
-    </div>
+    <!-- 결제 버튼을 가장 상단으로 배치 -->
+    <a href="https://theplanx.imweb.me/Secret-VIP" class="link-button" target="_blank">🚀 지금 바로 가입하고 혜택받기</a>
 
-    <div class="code-container">
-        <p class="code-label">🎁 나의 추천인 코드</p>
-        <span class="code-highlight" id="referralCode">qwer22</span>
+    <!-- 추천인 코드는 박스로 깔끔하게 -->
+    <div class="code-area">
+        <p class="code-label">입력 필수: 할인 적용 추천인 코드</p>
+        <span class="code-value" id="referralCode">qwer22</span>
         <button class="copy-btn" onclick="copyCode()">코드 복사하기</button>
     </div>
 
-    <a href="https://theplanx.imweb.me/Secret-VIP" class="link-button" target="_blank">🚀 Secret VIP 가입/결제하러 가기</a>
-
+    <!-- 안내 사항 -->
     <div class="toggle-section">
-        <div class="toggle-header" onclick="toggle(this)">🚀 신규 구독 추가 예정</div>
-        <div class="toggle-content">디즈니플러스, 넷플릭스, 디스코드 니트로 등 인기 구독 서비스가 곧 추가될 예정입니다. 조금만 기다려 주세요!</div>
+        <div class="toggle-header" onclick="toggle(this)">🚀 신규 구독 추가 예정 <span>▼</span></div>
+        <div class="toggle-content">디즈니플러스, 넷플릭스, 디스코드 니트로 등 인기 구독 서비스가 추가될 예정입니다.</div>
     </div>
     <div class="toggle-section">
-        <div class="toggle-header" onclick="toggle(this)">📦 제공 방식 안내</div>
-        <div class="toggle-content">본 서비스는 계정 비밀번호를 공유하는 방식이 아닙니다. 고객님만의 독립된 프로필을 제공하는 안전한 **활성화 링크 방식**입니다.</div>
+        <div class="toggle-header" onclick="toggle(this)">📦 제공 방식 안내 <span>▼</span></div>
+        <div class="toggle-content">독립된 프로필을 제공하는 안전한 활성화 링크 방식입니다.</div>
     </div>
     <div class="toggle-section">
-        <div class="toggle-header" onclick="toggle(this)">⏳ 제공 지연 안내</div>
-        <div class="toggle-content">해외 공급사 사정으로 인해 발송이 다소 지연될 수 있습니다. 제품 발송이 완료되면 알림 메시지를 별도로 발송해 드립니다.</div>
+        <div class="toggle-header" onclick="toggle(this)">⏳ 제공 지연 안내 <span>▼</span></div>
+        <div class="toggle-content">해외 공급사 사정으로 발송이 지연될 수 있으며, 완료 시 알림 메시지가 발송됩니다.</div>
     </div>
     <div class="toggle-section">
-        <div class="toggle-header" onclick="toggle(this)">⚠️ 구매 전 필수 확인 사항</div>
-        <div class="toggle-content">
-            서비스 내용, 가격, 환불 조건 등을 꼼꼼히 확인해 주세요. 결제·제공·환불·지연 등은 판매처 및 공급사 기준으로 처리되며, 구매 결정 이후 발생하는 사항은 구매자 본인의 책임입니다.
-        </div>
+        <div class="toggle-header" onclick="toggle(this)">⚠️ 구매 전 확인 사항 <span>▼</span></div>
+        <div class="toggle-content">결제·환불·지연 안내는 판매처 기준으로 처리됩니다. 구매 결정 및 결제 이후 발생하는 사항은 구매자 본인의 책임입니다.</div>
     </div>
 </div>
 
 <script>
     function copyCode() {
         const code = document.getElementById("referralCode").innerText;
-        navigator.clipboard.writeText(code).then(() => {
-            alert("추천인 코드가 복사되었습니다: " + code);
-        }).catch(err => {
-            console.error('복사 실패: ', err);
-            alert('코드 복사에 실패했습니다. 직접 복사해 주세요.');
-        });
+        navigator.clipboard.writeText(code).then(() => alert("코드가 복사되었습니다: " + code));
     }
-
-    function toggle(header) {
-        const section = header.parentElement;
-        const content = header.nextElementSibling;
-        const sections = document.querySelectorAll('.toggle-section');
-
-        // 다른 열린 섹션 닫기 (아코디언 효과 원할 시 주석 해제)
-        /*
-        sections.forEach(s => {
-            if (s !== section) {
-                s.classList.remove('active');
-                s.querySelector('.toggle-content').style.display = 'none';
-            }
-        });
-        */
-
-        // 현재 섹션 토글
-        section.classList.toggle('active');
-        if (section.classList.contains('active')) {
-            content.style.display = 'block';
-        } else {
-            content.style.display = 'none';
-        }
+    function toggle(el) {
+        const content = el.nextElementSibling;
+        content.style.display = content.style.display === "block" ? "none" : "block";
     }
 </script>
 
